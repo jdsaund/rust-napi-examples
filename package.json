@@ -1,0 +1,21 @@
+{
+  "name": "rust-napi-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cargo build --release",
+    "postinstall": "npm run build && mv ./target/release/librust_napi_examples.so ./index.node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdsaund/rust-napi-examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdsaund/rust-napi-examples/issues"
+  },
+  "homepage": "https://github.com/jdsaund/rust-napi-examples#readme"
+}
