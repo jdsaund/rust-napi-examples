@@ -1,3 +1,4 @@
-/target
+dist/
+target/
 Cargo.lock
-index.node
+*.node

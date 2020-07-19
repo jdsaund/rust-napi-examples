@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cargo build --release",
-    "postinstall": "npm run build && mv ./target/release/librust_napi_examples.so ./index.node",
+    "postinstall": "npm run build && mv ./target/release/libnapi_functions.so ./napi-functions.node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
