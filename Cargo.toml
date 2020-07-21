@@ -1,5 +1,6 @@
 [workspace]
 
 members = [
-  "napi_functions"
+  "napi_classes",
+  "napi_functions",
 ]

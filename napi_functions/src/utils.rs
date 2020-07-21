@@ -9,7 +9,7 @@ use nodejs_sys::{
 // convenience wrapper to get single parameter
 pub fn get_single_param(env: napi_env, info: napi_callback_info) -> napi_value {
     let mut buffer: [napi_value; 1] = unsafe { std::mem::MaybeUninit::zeroed().assume_init() };
-    let mut argc = 1 as usize;
+    let mut argc = 1 as u64;
 
     let status = unsafe { napi_get_cb_info(
         env,

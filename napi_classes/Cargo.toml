@@ -1,5 +1,5 @@
 [package]
-name = "napi-functions"
+name = "napi-classes"
 version = "0.1.0"
 authors = ["Jolyon Saunders <jol.saund@gmail.com>"]
 edition = "2018"

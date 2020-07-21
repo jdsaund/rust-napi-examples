@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cargo build --release",
-    "postinstall": "npm run build && mv ./target/release/libnapi_functions.so ./napi-functions.node",
+    "build": "cargo build",
+    "postinstall": "npm run build && mv -f ./target/debug/libnapi_classes.so ./napi-classes.node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
