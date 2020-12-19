@@ -12,8 +12,8 @@ use crate::utils::get_single_param;
 
 pub extern "C" fn reverse_string(env: napi_env, info: napi_callback_info) -> napi_value {
     let napi_val: napi_value = get_single_param(env, info);
-    let bufsize: usize = 0;
-    let mut num_bytes_copied: u64 = 0;
+    let mut bufsize: usize = 0;
+    let mut num_bytes_copied: usize = 0;
 
     // query node to get the bufsize
     let length_status = unsafe { napi_get_value_string_utf8(
@@ -21,7 +21,7 @@ pub extern "C" fn reverse_string(env: napi_env, info: napi_callback_info) -> nap
         napi_val,
         std::ptr::null_mut(),
         0,
-        &mut (bufsize as u64)
+        &mut bufsize
     ) };
 
     // check that the length query went ok
@@ -34,12 +34,12 @@ pub extern "C" fn reverse_string(env: napi_env, info: napi_callback_info) -> nap
         env,
         napi_val,
         buf_ptr as *mut i8,
-        (bufsize + 1) as u64,
+        bufsize + 1,
         &mut num_bytes_copied
     ) };
 
     // check that the copy went ok
-    assert_eq!(bufsize as u64, num_bytes_copied);
+    assert_eq!(bufsize, num_bytes_copied);
     assert_eq!(copy_status, napi_status::napi_ok);
 
     // dont manage `buf` memory as we will this responsibility to `string`
@@ -53,7 +53,7 @@ pub extern "C" fn reverse_string(env: napi_env, info: napi_callback_info) -> nap
     let create_status = unsafe { napi_create_string_utf8(
         env,
         c_str.as_ptr(),
-        bufsize as u64,
+        bufsize,
         &mut output
     ) };
 

@@ -17,7 +17,7 @@ pub extern "C" fn napi_register_module_v1(
     exports: napi_value
 ) -> nodejs_sys::napi_value {
     let func_name = "reverseString".to_string();
-    let name_len = func_name.len() as u64;
+    let name_len = func_name.len();
     let c_name = CString::new(func_name).expect("CString::new failed");
 
     unsafe {

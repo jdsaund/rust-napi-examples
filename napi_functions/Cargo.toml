@@ -10,4 +10,4 @@ edition = "2018"
 crate-type=["cdylib"]
 
 [dependencies]
-nodejs-sys = "0.4.1"
+nodejs-sys = "0.11.0"

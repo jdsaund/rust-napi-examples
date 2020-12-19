@@ -72,7 +72,7 @@ impl MyObject {
     ) -> napi_value {
         // get the argument
         let mut argv: [napi_value; 1] = std::mem::MaybeUninit::zeroed().assume_init();
-        let mut argc: u64 = 1;
+        let mut argc: usize = 1;
         let mut this: napi_value = std::mem::zeroed();
         NAPI_CALL!(napi_get_cb_info(
             env,
@@ -199,7 +199,7 @@ pub unsafe extern "C" fn napi_register_module_v1(
 
     // define the class
     let class_name = "MyObject".to_string();
-    let name_len = class_name.len() as u64;
+    let name_len = class_name.len();
     let c_name = CString::new(class_name).expect("CString::new failed");
     let mut cons: napi_value = std::mem::zeroed();
     NAPI_CALL!(napi_define_class(
@@ -208,7 +208,7 @@ pub unsafe extern "C" fn napi_register_module_v1(
         name_len,
         Some(MyObject::constructor),
         std::ptr::null_mut(),
-        properties.len() as u64,
+        properties.len(),
         properties.as_ptr(),
         &mut cons
     ));
