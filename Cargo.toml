@@ -3,4 +3,5 @@
 members = [
   "napi_classes",
   "napi_functions",
+  "napi_parameters",
 ]

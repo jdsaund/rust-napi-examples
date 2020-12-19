@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cargo build",
-    "postinstall": "npm run build && mv -f ./target/debug/libnapi_classes.so ./napi-classes.node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cargo build --release && for file in $(find ./target/release/*   -maxdepth 1 -name \"*.so\" -printf \"%f\n\" ) ; do cp \"./target/release/$file\" \"./${file//.so/}.node\"; done"
   },
   "repository": {
     "type": "git",
